@@ -1,0 +1,13 @@
+{
+  "name": "mini_server",
+  "version": "0.0.1",
+  "description": "mini-server",
+  "main": "server.js",
+  "author": {
+    "name": "bergw",
+    "email": "wb@bergwerk-gis.at"
+  },
+  "dependencies": {
+    "express": "3.4.4"
+  }
+}

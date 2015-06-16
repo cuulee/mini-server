@@ -1,0 +1,37 @@
+_prefs: 
+  disabled: []
+  inspector: false
+  mapid: ''
+  rev: ''
+  saveCenter: true
+attribution: ''
+center: 
+  - 16.3813
+  - 48.2235
+  - 13
+description: ''
+Layer: 
+  - id: zaehlgebiete
+    Datasource: 
+      file: /Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/raw/ZAEHLGEBIETOGD.json
+      layer: OGRGeoJSON
+      type: ogr
+    description: zaehlgebiete
+    fields: 
+      AKT_TIMESTAMP: String
+      BEZ: String
+      BEZNR: Number
+      FLAECHE: Number
+      SE_ANNO_CAD_DATA: String
+      SE_SDO_ROWID: Number
+      UMFANG: Number
+      ZBEZ: String
+      ZBEZNR: Number
+      ZGEB: String
+      ZGEBNR: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+maxzoom: 16
+minzoom: 0
+name: mini-server Source Wien
