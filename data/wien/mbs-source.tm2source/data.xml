@@ -3,9 +3,9 @@
 <Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
 
 <Parameters>
-  <Parameter name="center">16.3813,48.2235,13</Parameter>
+  <Parameter name="center">16.3687,48.2212,12</Parameter>
   <Parameter name="format">pbf</Parameter>
-  <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"zaehlgebiete","description":"zaehlgebiete","fields":{"BEZNR":"Number","ZBEZNR":"Number","ZGEBNR":"Number","BEZ":"String","ZBEZ":"String","ZGEB":"String","FLAECHE":"Number","UMFANG":"Number","AKT_TIMESTAMP":"String","SE_SDO_ROWID":"Number","SE_ANNO_CAD_DATA":"String"}}]}]]></Parameter>
+  <Parameter name="json"><![CDATA[{"vector_layers":[{"id":"zaehlgebiete","description":"zaehlgebiete","fields":{"BEZNR":"Number","ZBEZNR":"Number","ZGEBNR":"Number","BEZ":"String","ZBEZ":"String","ZGEB":"String","FLAECHE":"Number","UMFANG":"Number","AKT_TIMESTAMP":"String","SE_SDO_ROWID":"Number","SE_ANNO_CAD_DATA":"String"}},{"id":"strassen","description":"strassen","fields":{"OBJECTID":"Number","SE_ANNO_CAD_DATA":"String","MAINNAME_OBJECTID":"Number","FEATURENAME":"String","REG_STRNAME":"String","EDGECATEGORY":"String","EDGECATEGORY_NAME":"String","FRC":"Number","FRC_NAME":"String","FOW":"Number","FOW_NAME":"String","DEDICATEDWIDTH":"Number","LEVELINTERMEDIATE":"Number","NODEFROM_OBJECTID":"Number","NODETO_OBJECTID":"Number","BEZIRK":"String","SHAPELENGTH":"Number","GIP_OBJECTID":"Number","SCD":"String"}}]}]]></Parameter>
   <Parameter name="maxzoom">16</Parameter>
   <Parameter name="minzoom">0</Parameter>
   <Parameter name="name"><![CDATA[mini-server Source Wien]]></Parameter>
@@ -18,6 +18,17 @@
     
     <Datasource>
        <Parameter name="file"><![CDATA[/Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/raw/ZAEHLGEBIETOGD.json]]></Parameter>
+       <Parameter name="layer"><![CDATA[OGRGeoJSON]]></Parameter>
+       <Parameter name="type"><![CDATA[ogr]]></Parameter>
+    </Datasource>
+  </Layer>
+
+<Layer name="strassen"
+  buffer-size="8"
+  srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+    
+    <Datasource>
+       <Parameter name="file"><![CDATA[/Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/raw/strassen.json]]></Parameter>
        <Parameter name="layer"><![CDATA[OGRGeoJSON]]></Parameter>
        <Parameter name="type"><![CDATA[ogr]]></Parameter>
     </Datasource>

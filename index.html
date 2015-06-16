@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>mini-server</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+</head>
+<body>
+	<div id="map" style="width:95%; height:100%; position:absolute; top:0; bottom:0;"></div>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+	<script>
+		var lyr_basemap = L.tileLayer('http://{s}.wien.gv.at/basemap/geolandbasemap/normal/google3857/{z}/{y}/{x}.png', {subdomains: ['maps1', 'maps2', 'maps3', 'maps4']});
+		var lyr_color = L.tileLayer('http://localhost:6543/tiles/wien/color/{z}/{x}/{y}', {maxZoom: 22});
+		var lyr_black = L.tileLayer('http://localhost:6543/tiles/wien/black/{z}/{x}/{y}', {maxZoom: 22});
+
+		var map = L.map('map', {
+			center: [48.22, 16.34],
+			zoom: 12,
+			layers: [lyr_basemap, lyr_color]
+		});
+
+		var overlays = {
+			"Color": lyr_color,
+			"Black": lyr_black
+		};
+
+		L.control.layers(overlays, null).addTo(map);
+
+	</script>
+</body>
+</html>

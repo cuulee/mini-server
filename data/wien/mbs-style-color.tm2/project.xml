@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE Map[]>
-<Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" background-color="#ffffff">
+<Map srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over" background-color="rgba(0, 0, 0, 0)">
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">16.3576,48.1599,11</Parameter>
+  <Parameter name="center">16.3466,48.1345,11</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">22</Parameter>
   <Parameter name="minzoom">0</Parameter>
@@ -15,6 +15,11 @@
 
 <Style name="zaehlgebiete" filter-mode="first">
   <Rule>
+    <Filter>([BEZ] = '02')</Filter>
+    <LineSymbolizer stroke-width="1" stroke="rgba(4, 19, 4, 0.5)" />
+    <PolygonSymbolizer fill="#f482e0" />
+  </Rule>
+  <Rule>
     <LineSymbolizer stroke-width="1" stroke="rgba(4, 19, 4, 0.5)" />
     <PolygonSymbolizer fill="#f8dcf3" />
   </Rule>
@@ -22,5 +27,38 @@
 <Layer name="zaehlgebiete"
   srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
     <StyleName>zaehlgebiete</StyleName>  </Layer>
+
+<Style name="strassen-inline" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <LineSymbolizer stroke-width="2" stroke="#ffffff" />
+  </Rule>
+</Style>
+<Style name="strassen-outline" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>25000</MaxScaleDenominator>
+    <LineSymbolizer stroke-width="6" stroke="#000000" />
+  </Rule>
+</Style>
+<Style name="strassen" filter-mode="first">
+  <Rule>
+    <MaxScaleDenominator>5000</MaxScaleDenominator>
+    <LineSymbolizer stroke-width="8" />
+  </Rule>
+  <Rule>
+    <MaxScaleDenominator>100000</MaxScaleDenominator>
+    <MinScaleDenominator>5000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="1.5" />
+  </Rule>
+  <Rule>
+    <MinScaleDenominator>100000</MinScaleDenominator>
+    <LineSymbolizer stroke-width="1" />
+  </Rule>
+</Style>
+<Layer name="strassen"
+  srs="+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over">
+    <StyleName>strassen</StyleName>
+    <StyleName>strassen-outline</StyleName>
+    <StyleName>strassen-inline</StyleName>  </Layer>
 
 </Map>

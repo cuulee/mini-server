@@ -6,9 +6,9 @@ _prefs:
   saveCenter: true
 attribution: ''
 center: 
-  - 16.3813
-  - 48.2235
-  - 13
+  - 16.3687
+  - 48.2212
+  - 12
 description: ''
 Layer: 
   - id: zaehlgebiete
@@ -29,6 +29,35 @@ Layer:
       ZBEZNR: Number
       ZGEB: String
       ZGEBNR: Number
+    properties: 
+      "buffer-size": 8
+    srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
+  - id: strassen
+    Datasource: 
+      file: /Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/raw/strassen.json
+      layer: OGRGeoJSON
+      type: ogr
+    description: strassen
+    fields: 
+      BEZIRK: String
+      DEDICATEDWIDTH: Number
+      EDGECATEGORY: String
+      EDGECATEGORY_NAME: String
+      FEATURENAME: String
+      FOW: Number
+      FOW_NAME: String
+      FRC: Number
+      FRC_NAME: String
+      GIP_OBJECTID: Number
+      LEVELINTERMEDIATE: Number
+      MAINNAME_OBJECTID: Number
+      NODEFROM_OBJECTID: Number
+      NODETO_OBJECTID: Number
+      OBJECTID: Number
+      REG_STRNAME: String
+      SCD: String
+      SE_ANNO_CAD_DATA: String
+      SHAPELENGTH: Number
     properties: 
       "buffer-size": 8
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs

@@ -4,79 +4,67 @@ var path = require('path');
 var fs = require('fs');
 var tilelive = require('tilelive');
 require("mbtiles").registerProtocols(tilelive);
-require('tilelive-bridge').registerProtocols(tilelive);
-require('tilelive-vector').registerProtocols(tilelive);
-//require('tilelive-file').registerProtocols(tilelive);
-//require('tilelive-mapnik').registerProtocols(tilelive);
-
-process.env.UV_THREADPOOL_SIZE = Math.ceil(Math.max(4, require('os').cpus().length * 1.5));
+var Vector = require("tilelive-vector");
+Vector.registerProtocols(tilelive);
 
 var port = process.env.PORT || 6543;
+process.env.UV_THREADPOOL_SIZE = Math.ceil(Math.max(4, require('os').cpus().length * 1.5));
+var data_dir = path.resolve(__dirname, 'data');
+console.log('data_dir:',data_dir);
+
 var app = express();
-
-
 app.set('port', port);
 
-app.get('/', function (req, res) {
-	res.send('TODO list resources. Use http://localhost:' + port + '/tiles/{resource}/{z}/{x}/{y}');
-});
+//list registered protocols
+console.log(Object.keys(tilelive.protocols));
 
-function list_data(dir){
-	console.log(dir);
-	tilelive.list(dir, function(err, sources){
-		console.log('err:', err);
-		console.log('sources:', sources);
-	});
-}
+//HACK: implement dummy list function
+Vector.tm2z.list = function(dir, callback){ return callback(null, {});};
+Vector.list = function(dir, callback){ return callback(null, {});};
 
-app.get('/tiles/:resource/:style/:z/:x/:y', function (req, res) {
+var styles = ['color', 'black'];
 
-	var resource = req.params.resource;
-	var style = req.params.style;
-	var x = +req.params.x;
-	var y = +req.params.y;
-	var z = +req.params.z;
+tilelive.list(data_dir, function(err, sources){
 
-	//res.send(resource + '/' + style + '/' +z + '/' + x + '/' + y);
+	if(err) return console.log('list err:', err);
 
-	//tilelive.load('bridge:///path/to/file.xml', function (err, source) {
+	Object.keys(sources).forEach(function(key, idx){
 
-	var data_dir = '/Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/';
-	//list_data(data_dir);
-	//list_data(data_dir+'wien');
-	console.log(Object.keys(tilelive.protocols));
+		var src_name = key;
+		var src_data = sources[src_name];
+		console.log(src_name, src_data);
 
-/*	tilelive.list(data_dir, function(err, sources){
-		console.log('err:', err);
-		console.log('sources:', sources);
-	});
-*/
-
-	var opts = {
-		xml: fs.readFileSync(data_dir + 'wien/mbs-style-color.tm2/project.xml').toString("utf-8"),
-		source: 'mbtiles:///Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien.mbtiles',
-
-	};
-
-	//tilelive.load(opts, function (err, source) {
-	tilelive.load(opts.source, function (err, source) {
-		if (err) { console.log(err); return res.send(err);}
-
-		// Interface is in XYZ/Google coordinates.
-		// Use `y = (1 << z) - 1 - y` to flip TMS coordinates.
-		source.getTile(0, 0, 0, function (err, tile, headers) {
-			// `err` is an error object when generation failed, otherwise null.
-			// `tile` contains the compressed image file as a Buffer
-			// `headers` is a hash with HTTP headers for the image.
-			if (err) { console.log(err); return res.send(err);}
-			console.log(headers);
-			res.set(headers);
-			return res.send(tile);
+		styles.forEach(function(style){
+			var xml = fs.readFileSync(path.join(data_dir, 'wien/mbs-style-' + style +'.tm2/project.xml')).toString("utf-8");
+			new Vector.Backend({
+				uri: src_data
+			}, function(err, backend){
+				new Vector({
+					xml:xml,
+					backend:backend
+				}, function(err, tile_store){
+					console.log('before app.get');
+					var url_path = '/tiles/' + src_name + '/'+ style + '/:z/:x/:y';
+					console.log('url_path', url_path);
+					app.get(url_path, function(req, res){ return getTile(tile_store, req.params.z, req.params.x, req.params.y, res);});
+				});
+			});
 		});
-
-		// The `.getGrid` is implemented accordingly.
 	});
 });
+
+
+function getTile(tilestore, z, x, y, res) {
+	console.log(z, x, y);
+	tilestore.getTile(z, x, y, function(err, tile, headers) {
+		if (err) {
+			console.log(err);
+			return res.status(404).send("Tile rendering error: " + err + "\n");
+		}
+		res.set(headers);
+		return res.send(tile);
+	});
+};
 
 
 console.log('serving on port: ' + port);
