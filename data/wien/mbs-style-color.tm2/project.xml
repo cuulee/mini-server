@@ -4,12 +4,12 @@
 
 <Parameters>
   <Parameter name="bounds">-180,-85.0511,180,85.0511</Parameter>
-  <Parameter name="center">16.3466,48.1345,11</Parameter>
+  <Parameter name="center">16.36,48.2059,13</Parameter>
   <Parameter name="format">png8:m=h</Parameter>
   <Parameter name="maxzoom">22</Parameter>
   <Parameter name="minzoom">0</Parameter>
   <Parameter name="name"><![CDATA[mini-server Color Wien]]></Parameter>
-  <Parameter name="source"><![CDATA[tmsource:///Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/mbs-source.tm2source]]></Parameter>
+  <Parameter name="source"><![CDATA[tmsource:///mb/mini-server/data/wien/mbs-source.tm2source]]></Parameter>
 </Parameters>
 
 
@@ -31,7 +31,7 @@
 <Style name="strassen-inline" filter-mode="first">
   <Rule>
     <MaxScaleDenominator>25000</MaxScaleDenominator>
-    <LineSymbolizer stroke-width="2" stroke="#ffffff" />
+    <LineSymbolizer stroke-width="2" stroke="#facf4c" />
   </Rule>
 </Style>
 <Style name="strassen-outline" filter-mode="first">

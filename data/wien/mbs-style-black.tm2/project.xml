@@ -9,7 +9,7 @@
   <Parameter name="maxzoom">22</Parameter>
   <Parameter name="minzoom">0</Parameter>
   <Parameter name="name"><![CDATA[mini-server Black Wien]]></Parameter>
-  <Parameter name="source"><![CDATA[tmsource:///Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/mbs-source.tm2source]]></Parameter>
+  <Parameter name="source"><![CDATA[tmsource:///mb/mini-server/data/wien/mbs-source.tm2source]]></Parameter>
 </Parameters>
 
 

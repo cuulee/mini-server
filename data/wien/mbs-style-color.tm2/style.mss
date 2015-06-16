@@ -7,8 +7,8 @@ Map {
   line-width: 1;
   [zoom>12]{line-width: 1.5;}
   [zoom>14]{
-   ::outline {line-width: 6; line-color: black;}
-   ::inline {line-width: 2; line-color: white;}
+   ::outline {line-width: 6; line-color: #000000;}
+   ::inline {line-width: 2; line-color: #facf4c;}
   }
   [zoom>16]{ line-width: 8;}
 }

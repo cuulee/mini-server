@@ -9,9 +9,9 @@ bounds:
   - 180
   - 85.0511
 center: 
-  - 16.3466
-  - 48.1345
-  - 11
+  - 16.36
+  - 48.2059
+  - 13
 description: ''
 format: "png8:m=h"
 interactivity_layer: ''
@@ -19,7 +19,7 @@ layers: null
 maxzoom: 22
 minzoom: 0
 name: mini-server Color Wien
-source: "tmsource:///Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/mbs-source.tm2source"
+source: "tmsource:///mb/mini-server/data/wien/mbs-source.tm2source"
 styles: 
   - style.mss
 template: ''

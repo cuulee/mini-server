@@ -13,7 +13,7 @@ description: ''
 Layer: 
   - id: zaehlgebiete
     Datasource: 
-      file: /Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/raw/ZAEHLGEBIETOGD.json
+      file: /mb/mini-server/data/wien/raw/ZAEHLGEBIETOGD.json
       layer: OGRGeoJSON
       type: ogr
     description: zaehlgebiete
@@ -34,7 +34,7 @@ Layer:
     srs: +proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs
   - id: strassen
     Datasource: 
-      file: /Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/raw/strassen.json
+      file: /mb/mini-server/data/wien/raw/strassen.json
       layer: OGRGeoJSON
       type: ogr
     description: strassen

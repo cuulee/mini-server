@@ -17,7 +17,7 @@
   srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
-       <Parameter name="file"><![CDATA[/Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/raw/ZAEHLGEBIETOGD.json]]></Parameter>
+       <Parameter name="file"><![CDATA[/mb/mini-server/data/wien/raw/ZAEHLGEBIETOGD.json]]></Parameter>
        <Parameter name="layer"><![CDATA[OGRGeoJSON]]></Parameter>
        <Parameter name="type"><![CDATA[ogr]]></Parameter>
     </Datasource>
@@ -28,7 +28,7 @@
   srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
     
     <Datasource>
-       <Parameter name="file"><![CDATA[/Users/bergw/_Projekte/MapBox/_Applikationen/mini-server/data/wien/raw/strassen.json]]></Parameter>
+       <Parameter name="file"><![CDATA[/mb/mini-server/data/wien/raw/strassen.json]]></Parameter>
        <Parameter name="layer"><![CDATA[OGRGeoJSON]]></Parameter>
        <Parameter name="type"><![CDATA[ogr]]></Parameter>
     </Datasource>
