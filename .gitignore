@@ -1,6 +1,9 @@
 node_modules
 *.mbtiles
 
+*.exe
+*.dll
+*.7z
 *.suo
 *.user
 *.sln*
